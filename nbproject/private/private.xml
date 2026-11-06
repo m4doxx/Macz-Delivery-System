@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/DBConnection.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/LoginFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/SignupFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/HomepageFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/VehicleInfoFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/DriverInfoFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/AboutUsFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/PasswordUtil.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/UserSession.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/ProfileFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/ManageDeliveryRatesFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/ChangePasswordFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/BookingHistoryFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/BookingAssignmentFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/DashboardFrame.java</file>
+            <file>file:/Users/itzz.maxz/NetBeansProjects/MaczDeliverySystem/src/macz/delivery/BookingFrame.java</file>
+        </group>
+    </open-files>
+</project-private>
