@@ -1,0 +1,294 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package macz.delivery;
+
+/**
+ *
+ * @author itzz.maxz
+ */
+public class DashboardFrame extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DashboardFrame.class.getName());
+
+    /**
+     * Creates new form DashboardFrame
+     */
+    public DashboardFrame() {
+    initComponents();
+
+    // Center the existing Dashboard form
+    java.awt.Container originalContent = getContentPane();
+    java.awt.Dimension originalSize = originalContent.getPreferredSize();
+
+    javax.swing.JPanel wrapper = new javax.swing.JPanel(
+        new java.awt.GridBagLayout()
+    );
+
+    originalContent.setPreferredSize(originalSize);
+    wrapper.add(originalContent);
+    setContentPane(wrapper);
+
+    // Dashboard window settings
+    setTitle("Macz Delivery System - Dashboard");
+    setResizable(true);
+    setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+
+    // Dashboard statistics font
+    java.awt.Font statsFont =
+        new java.awt.Font("Arial", java.awt.Font.BOLD, 18);
+
+    // Apply font to all four statistics
+    lblTotalBookings.setFont(statsFont);
+    lblAvailableDrivers.setFont(statsFont);
+    lblAvailableVehicles.setFont(statsFont);
+    lblPendingDeliveries.setFont(statsFont);
+
+    // Apply dark blue text color
+    java.awt.Color statsColor =
+        new java.awt.Color(25, 55, 95);
+
+    lblTotalBookings.setForeground(statsColor);
+    lblAvailableDrivers.setForeground(statsColor);
+    lblAvailableVehicles.setForeground(statsColor);
+    lblPendingDeliveries.setForeground(statsColor);
+
+    // Load live dashboard statistics
+    loadTotalBookings();
+    loadAvailableDrivers();
+    loadAvailableVehicles();
+    loadPendingDeliveries();
+}
+    
+    private void loadTotalBookings() {
+
+    String sql = "SELECT COUNT(*) AS total FROM bookings";
+
+    try (java.sql.Connection con = DBConnection.connect();
+         java.sql.PreparedStatement pst = con.prepareStatement(sql);
+         java.sql.ResultSet rs = pst.executeQuery()) {
+
+        if (rs.next()) {
+            int total = rs.getInt("total");
+
+            lblTotalBookings.setText(
+                "Total Bookings: " + total
+            );
+        }
+
+    } catch (java.sql.SQLException e) {
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Error loading total bookings:\n" + e.getMessage()
+        );
+    }
+}
+    private void loadAvailableDrivers() {
+
+    String sql =
+        "SELECT COUNT(*) AS total FROM drivers "
+        + "WHERE status = 'AVAILABLE'";
+
+    try (java.sql.Connection con = DBConnection.connect();
+         java.sql.PreparedStatement pst = con.prepareStatement(sql);
+         java.sql.ResultSet rs = pst.executeQuery()) {
+
+        if (rs.next()) {
+            int total = rs.getInt("total");
+
+            lblAvailableDrivers.setText(
+                "Available Drivers: " + total
+            );
+        }
+
+    } catch (java.sql.SQLException e) {
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Error loading available drivers:\n" + e.getMessage()
+        );
+    }
+}
+    private void loadAvailableVehicles() {
+
+    String sql =
+        "SELECT COUNT(*) AS total FROM vehicles "
+        + "WHERE status = 'AVAILABLE'";
+
+    try (java.sql.Connection con = DBConnection.connect();
+         java.sql.PreparedStatement pst = con.prepareStatement(sql);
+         java.sql.ResultSet rs = pst.executeQuery()) {
+
+        if (rs.next()) {
+            int total = rs.getInt("total");
+
+            lblAvailableVehicles.setText(
+                "Available Vehicles: " + total
+            );
+        }
+
+    } catch (java.sql.SQLException e) {
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Error loading available vehicles:\n" + e.getMessage()
+        );
+    }
+}
+    private void loadPendingDeliveries() {
+
+    String sql =
+        "SELECT COUNT(*) AS total FROM bookings "
+        + "WHERE status = 'PENDING'";
+
+    try (java.sql.Connection con = DBConnection.connect();
+         java.sql.PreparedStatement pst = con.prepareStatement(sql);
+         java.sql.ResultSet rs = pst.executeQuery()) {
+
+        if (rs.next()) {
+            int total = rs.getInt("total");
+
+            lblPendingDeliveries.setText(
+                "Pending Deliveries: " + total
+            );
+        }
+
+    } catch (java.sql.SQLException e) {
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Error loading pending deliveries:\n" + e.getMessage()
+        );
+    }
+}
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        lblTotalBookings = new javax.swing.JLabel();
+        lblAvailableDrivers = new javax.swing.JLabel();
+        lblAvailableVehicles = new javax.swing.JLabel();
+        lblPendingDeliveries = new javax.swing.JLabel();
+        btnRefreshDashboard = new javax.swing.JButton();
+        btnBackHome = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel1.setText("MACZ DELIVERY DASHBOARD");
+
+        lblTotalBookings.setText("Total Bookings: 0");
+
+        lblAvailableDrivers.setText("Available Drivers: 0");
+
+        lblAvailableVehicles.setText("Available Vehicles: 0");
+
+        lblPendingDeliveries.setText("Pending Deliveries: 0");
+
+        btnRefreshDashboard.setText("Refresh");
+        btnRefreshDashboard.addActionListener(this::btnRefreshDashboardActionPerformed);
+
+        btnBackHome.setText("Back to Home");
+        btnBackHome.addActionListener(this::btnBackHomeActionPerformed);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTotalBookings)
+                            .addComponent(lblAvailableVehicles))
+                        .addGap(135, 135, 135)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPendingDeliveries)
+                            .addComponent(lblAvailableDrivers)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(btnBackHome)
+                        .addGap(123, 123, 123)
+                        .addComponent(btnRefreshDashboard)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(187, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(167, 167, 167))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotalBookings)
+                    .addComponent(lblAvailableDrivers))
+                .addGap(113, 113, 113)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAvailableVehicles)
+                    .addComponent(lblPendingDeliveries))
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBackHome)
+                    .addComponent(btnRefreshDashboard))
+                .addContainerGap(207, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRefreshDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDashboardActionPerformed
+        loadTotalBookings();
+        loadAvailableDrivers();
+        loadAvailableVehicles();
+        loadPendingDeliveries();
+    }//GEN-LAST:event_btnRefreshDashboardActionPerformed
+
+    private void btnBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackHomeActionPerformed
+        new HomepageFrame().setVisible(true);
+this.dispose();
+    }//GEN-LAST:event_btnBackHomeActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new DashboardFrame().setVisible(true));
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBackHome;
+    private javax.swing.JButton btnRefreshDashboard;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblAvailableDrivers;
+    private javax.swing.JLabel lblAvailableVehicles;
+    private javax.swing.JLabel lblPendingDeliveries;
+    private javax.swing.JLabel lblTotalBookings;
+    // End of variables declaration//GEN-END:variables
+}
